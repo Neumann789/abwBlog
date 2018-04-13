@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/abwBlog")
 public class IndexController {
 
-    @RequestMapping(value = "/index",method= RequestMethod.POST)
+    @RequestMapping(value = "/index")
     public BaseRsp index(@RequestBody BaseReq req){
 
         BaseRsp rsp = new BaseRsp();

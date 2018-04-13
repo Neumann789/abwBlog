@@ -1,13 +1,13 @@
-Ïà¹Ø¼¼Êõ£º
-springboot-Æô¶¯ºÍbean¹ÜÀí
-swagger
+ï»¿ç›¸å…³æŠ€æœ¯ï¼š
+springboot-å¯åŠ¨å’Œbeanç®¡ç†
+swagger:  http://localhost:8011/swagger-ui.html
 
-java°²È«¿ò¼Ü
+javaå®‰å…¨æ¡†æ¶
 shiro or spring security
-mybatis --dao·ÃÎÊ²ã¿ò¼Ü
-lucence --ËÑË÷ÒıÇæ ¿ÉÑ¡Ôñ¸ü¿ò¼Ü
+mybatis --daoè®¿é—®å±‚æ¡†æ¶
+lucence --æœç´¢å¼•æ“ å¯é€‰æ‹©æ›´æ¡†æ¶
 spring-data
 
-ÈÕÖ¾¿ò¼ÜÊ¹ÓÃ:logback
-Á¬½Ó³Ø£ºdruid
-»º´æÊ¹ÓÃ£ºredis
+æ—¥å¿—æ¡†æ¶ä½¿ç”¨:logback
+è¿æ¥æ± ï¼šdruid
+ç¼“å­˜ä½¿ç”¨ï¼šredis
