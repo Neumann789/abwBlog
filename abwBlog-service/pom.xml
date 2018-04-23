@@ -11,5 +11,12 @@
 
     <artifactId>abwBlog-service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.abw.blog</groupId>
+            <artifactId>abwBlog-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

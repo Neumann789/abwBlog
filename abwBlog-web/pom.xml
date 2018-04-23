@@ -20,7 +20,7 @@
 
         <dependency>
             <groupId>com.abw.blog</groupId>
-            <artifactId>abwBlog-common</artifactId>
+            <artifactId>abwBlog-service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

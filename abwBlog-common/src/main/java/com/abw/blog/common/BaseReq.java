@@ -1,4 +1,4 @@
-package com.abw.blog.controller;
+package com.abw.blog.common;
 
 /**
  * Created by fanghuabao on 2018/4/13 0013.
