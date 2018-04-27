@@ -1,5 +1,7 @@
 package com.abw.boot;
 
+import com.abw.blog.common.utils.SpringUtils;
+import com.abw.blog.config.ConfigUtils;
 import com.abw.blog.interceptor.WebAppConfig;
 import com.abw.blog.mapper.AbwUserMapper;
 import com.abw.blog.model.AbwUser;
@@ -47,6 +49,16 @@ public class SpringBootStart {
 
         return new WebFilter();
 
+    }
+
+    @Bean
+    public SpringUtils SpringUtils(){
+        return new SpringUtils();
+    }
+
+    @Bean
+    public ConfigUtils ConfigUtils(){
+        return new ConfigUtils();
     }
 
     /**

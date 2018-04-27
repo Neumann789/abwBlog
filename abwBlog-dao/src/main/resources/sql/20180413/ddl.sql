@@ -25,3 +25,44 @@ create table abw_user(
   remark  varchar(200) DEFAULT 'sys' COMMENT '备注',
   PRIMARY KEY (`id`)
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+
+
+create table abw_content(
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  source VARCHAR(20) DEFAULT "orginal" COMMENT '内容来源:orginal-原创，reproduce-转载',
+  category VARCHAR(20) DEFAULT NULL COMMENT '内容分类:博客，提问等',
+  title VARCHAR(200) DEFAULT  null COMMENT '标题',
+  theme_image VARCHAR(200) DEFAULT NULL COMMENT '主题图片',
+  theme_video VARCHAR(200) DEFAULT NULL COMMENT '主题视频',
+  content TEXT DEFAULT null COMMENT '内容',
+  tags VARCHAR(200) DEFAULT NULL COMMENT '标签，多个以|分割',
+  user_id bigint(20) NOT NULL COMMENT '用户ID',
+  `create_by` varchar(64) DEFAULT 'sys' COMMENT '创建人',
+  `create_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
+  `modify_by` varchar(64) DEFAULT 'sys' COMMENT '修改人',
+  `modify_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+)ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT '内容表';
+
+
+CREATE TABLE `abw_config` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `config_type` varchar(100) DEFAULT '' COMMENT '配置类型:nav',
+  `config_type_name` varchar(100) DEFAULT '' COMMENT '配置类型名:导航',
+  `config_key` varchar(200) NOT NULL COMMENT '配置key',
+  `config_val` varchar(300) DEFAULT '' COMMENT '配置val',
+  `priority` bigint(20) DEFAULT '0' COMMENT '优先级',
+  `parent_config_id` bigint(20) DEFAULT NULL,
+  `ext_map` varchar(500) DEFAULT '' COMMENT '配置扩展,形如: k1=v1|k2=v2',
+  `create_by` varchar(64) DEFAULT 'sys' COMMENT '创建人',
+  `create_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
+  `modify_by` varchar(64) DEFAULT 'sys' COMMENT '修改人',
+  `modify_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='配置表';
+
+#abw_config中config_type和config_key添加唯一联合索引
+alter table abw_config add UNIQUE index index_config_type_key (config_type,config_key);
+
+

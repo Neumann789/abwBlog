@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class AbwServiceInterceptor extends ServiceInterceptor{
-    @Pointcut("execution(public  * com.abw.blog.service.impl.UserServiceImpl.*(..))")
+    @Pointcut("execution(public  * com.abw.blog.service.impl.*ServiceImpl.*(..))")
     public void aspectjMethod() {
-        System.out.println("");
+
     }
 
 }

@@ -76,4 +76,8 @@ public class BaseRsp<T> implements Serializable{
     public static BaseRsp returnRsp(RspCodeEnum rspCodeEnum){
         return new BaseRsp(rspCodeEnum);
     }
+
+    public static BaseRsp returnRsp(String rspCode,String rspMsg){
+        return new BaseRsp(rspCode,rspMsg);
+    }
 }

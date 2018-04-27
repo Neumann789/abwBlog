@@ -5,11 +5,16 @@ package com.abw.blog.common.constants;
  */
 public enum RspCodeEnum {
 
-    SUCCESS("0000","成功"),
+    SUCCESS("0000","处理成功"),
     FAIL("9999","失败,原因:%s"),
     LOGIN_FAIL("L999","登录失败"),
     LOGIN_UN_REGIST("L001","此用户名未注册"),
     LOGIN_PSW_WRONG("L001","密码输入有误"),
+
+
+
+    CONTENT_UPLOAD_FAIL("C999","上传文件失败，原因:%s"),
+    CONFIG_READ_ERROR("C001","配置数据读取异常，原因:%s");
     ;
 
     private String rspCode;

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abw.blog.mapper.AbwConfigMapper">
+  <resultMap id="BaseResultMap" type="com.abw.blog.model.AbwConfig">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="config_type" jdbcType="VARCHAR" property="configType" />
+    <result column="config_type_name" jdbcType="VARCHAR" property="configTypeName" />
+    <result column="config_key" jdbcType="VARCHAR" property="configKey" />
+    <result column="config_val" jdbcType="VARCHAR" property="configVal" />
+    <result column="priority" jdbcType="BIGINT" property="priority" />
+    <result column="parent_config_id" jdbcType="BIGINT" property="parentConfigId" />
+    <result column="ext_map" jdbcType="VARCHAR" property="extMap" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_by" jdbcType="VARCHAR" property="modifyBy" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, config_type, config_type_name, config_key, config_val, priority, parent_config_id, 
+    ext_map, create_by, create_time, modify_by, modify_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from abw_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from abw_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.abw.blog.model.AbwConfig">
+    insert into abw_config (id, config_type, config_type_name, 
+      config_key, config_val, priority, 
+      parent_config_id, ext_map, create_by, 
+      create_time, modify_by, modify_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{configType,jdbcType=VARCHAR}, #{configTypeName,jdbcType=VARCHAR}, 
+      #{configKey,jdbcType=VARCHAR}, #{configVal,jdbcType=VARCHAR}, #{priority,jdbcType=BIGINT}, 
+      #{parentConfigId,jdbcType=BIGINT}, #{extMap,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.abw.blog.model.AbwConfig">
+    insert into abw_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="configType != null">
+        config_type,
+      </if>
+      <if test="configTypeName != null">
+        config_type_name,
+      </if>
+      <if test="configKey != null">
+        config_key,
+      </if>
+      <if test="configVal != null">
+        config_val,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="parentConfigId != null">
+        parent_config_id,
+      </if>
+      <if test="extMap != null">
+        ext_map,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyBy != null">
+        modify_by,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="configType != null">
+        #{configType,jdbcType=VARCHAR},
+      </if>
+      <if test="configTypeName != null">
+        #{configTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="configKey != null">
+        #{configKey,jdbcType=VARCHAR},
+      </if>
+      <if test="configVal != null">
+        #{configVal,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=BIGINT},
+      </if>
+      <if test="parentConfigId != null">
+        #{parentConfigId,jdbcType=BIGINT},
+      </if>
+      <if test="extMap != null">
+        #{extMap,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.abw.blog.model.AbwConfig">
+    update abw_config
+    <set>
+      <if test="configType != null">
+        config_type = #{configType,jdbcType=VARCHAR},
+      </if>
+      <if test="configTypeName != null">
+        config_type_name = #{configTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="configKey != null">
+        config_key = #{configKey,jdbcType=VARCHAR},
+      </if>
+      <if test="configVal != null">
+        config_val = #{configVal,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=BIGINT},
+      </if>
+      <if test="parentConfigId != null">
+        parent_config_id = #{parentConfigId,jdbcType=BIGINT},
+      </if>
+      <if test="extMap != null">
+        ext_map = #{extMap,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        modify_by = #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.abw.blog.model.AbwConfig">
+    update abw_config
+    set config_type = #{configType,jdbcType=VARCHAR},
+      config_type_name = #{configTypeName,jdbcType=VARCHAR},
+      config_key = #{configKey,jdbcType=VARCHAR},
+      config_val = #{configVal,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=BIGINT},
+      parent_config_id = #{parentConfigId,jdbcType=BIGINT},
+      ext_map = #{extMap,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+<select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from abw_config
+    order  by priority asc
+</select>
+</mapper>

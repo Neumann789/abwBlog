@@ -24,4 +24,5 @@ public interface UserService {
     public BaseRsp login(UserInfo userInfo);
 
 
+
 }
