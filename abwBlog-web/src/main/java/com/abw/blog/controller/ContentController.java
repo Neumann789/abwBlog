@@ -58,11 +58,11 @@ public class ContentController {
         if (!mulFile.isEmpty()) {
             String mulFileName = mulFile.getOriginalFilename();
             try {
-                File file = new File(abwUploadDir, SeqUtils.getUUIDPreWithTime()+mulFileName);
+                File file = new File(abwUploadDir, SeqUtils.getUUIDPreWithTime()+"_"+mulFileName);
                 file.createNewFile();
                 outputStream = new FileOutputStream(file);
                 outputStream.write(mulFile.getBytes());
-                newUploadFileUrl = abwHttpFileServer+"_"+file.getName();
+                newUploadFileUrl = abwHttpFileServer+file.getName();
                 logger.info("File load success.");
             } catch (Exception e) {
                 logger.error("upload file error:"+e.getMessage(),e);
