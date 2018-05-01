@@ -1,3 +1,7 @@
+
+#创建数据块
+CREATE DATABASE `abw_blog` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
 create table abw_user(
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   user_name VARCHAR(200) DEFAULT  null COMMENT '用户姓名',
