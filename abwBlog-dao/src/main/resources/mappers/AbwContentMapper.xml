@@ -239,7 +239,8 @@
             and modify_time = #{modifyTime,jdbcType=TIMESTAMP}
         </if>
         <if test="content != null">
-            and content like concat(concat('%',#{content,jdbcType=LONGVARCHAR}),'%')
+            and (content like concat(concat('%',#{content,jdbcType=LONGVARCHAR}),'%')
+                  or title like concat(concat('%',#{content,jdbcType=LONGVARCHAR}),'%'))
         </if>
         order by create_time desc
 
