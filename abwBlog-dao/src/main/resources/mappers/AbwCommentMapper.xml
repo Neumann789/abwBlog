@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.abw.blog.mapper.AbwCommentMapper">
+  <resultMap id="BaseResultMap" type="com.abw.blog.model.AbwComment">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="comment_user_id" jdbcType="BIGINT" property="commentUserId" />
+    <result column="comment_user_name" jdbcType="VARCHAR" property="commentUserName" />
+    <result column="to_user_id" jdbcType="BIGINT" property="toUserId" />
+    <result column="to_user_name" jdbcType="VARCHAR" property="toUserName" />
+    <result column="to_comment_id" jdbcType="BIGINT" property="toCommentId" />
+    <result column="content_id" jdbcType="BIGINT" property="contentId" />
+    <result column="floor_num" jdbcType="BIGINT" property="floorNum" />
+    <result column="forbid_flag" jdbcType="VARCHAR" property="forbidFlag" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_by" jdbcType="VARCHAR" property="modifyBy" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.abw.blog.model.AbwComment">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, comment_user_id, comment_user_name, to_user_id, to_user_name, to_comment_id, 
+    content_id, floor_num, forbid_flag, create_by, create_time, modify_by, modify_time
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from abw_comment
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from abw_comment
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.abw.blog.model.AbwComment">
+    insert into abw_comment (id, comment_user_id, comment_user_name, 
+      to_user_id, to_user_name, to_comment_id, 
+      content_id, floor_num, forbid_flag, 
+      create_by, create_time, modify_by, 
+      modify_time, content)
+    values (#{id,jdbcType=BIGINT}, #{commentUserId,jdbcType=BIGINT}, #{commentUserName,jdbcType=VARCHAR}, 
+      #{toUserId,jdbcType=BIGINT}, #{toUserName,jdbcType=VARCHAR}, #{toCommentId,jdbcType=BIGINT}, 
+      #{contentId,jdbcType=BIGINT}, #{floorNum,jdbcType=BIGINT}, #{forbidFlag,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.abw.blog.model.AbwComment">
+    insert into abw_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="commentUserId != null">
+        comment_user_id,
+      </if>
+      <if test="commentUserName != null">
+        comment_user_name,
+      </if>
+      <if test="toUserId != null">
+        to_user_id,
+      </if>
+      <if test="toUserName != null">
+        to_user_name,
+      </if>
+      <if test="toCommentId != null">
+        to_comment_id,
+      </if>
+      <if test="contentId != null">
+        content_id,
+      </if>
+      <if test="floorNum != null">
+        floor_num,
+      </if>
+      <if test="forbidFlag != null">
+        forbid_flag,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyBy != null">
+        modify_by,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="commentUserId != null">
+        #{commentUserId,jdbcType=BIGINT},
+      </if>
+      <if test="commentUserName != null">
+        #{commentUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="toUserId != null">
+        #{toUserId,jdbcType=BIGINT},
+      </if>
+      <if test="toUserName != null">
+        #{toUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="toCommentId != null">
+        #{toCommentId,jdbcType=BIGINT},
+      </if>
+      <if test="contentId != null">
+        #{contentId,jdbcType=BIGINT},
+      </if>
+      <if test="floorNum != null">
+        #{floorNum,jdbcType=BIGINT},
+      </if>
+      <if test="forbidFlag != null">
+        #{forbidFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.abw.blog.model.AbwComment">
+    update abw_comment
+    <set>
+      <if test="commentUserId != null">
+        comment_user_id = #{commentUserId,jdbcType=BIGINT},
+      </if>
+      <if test="commentUserName != null">
+        comment_user_name = #{commentUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="toUserId != null">
+        to_user_id = #{toUserId,jdbcType=BIGINT},
+      </if>
+      <if test="toUserName != null">
+        to_user_name = #{toUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="toCommentId != null">
+        to_comment_id = #{toCommentId,jdbcType=BIGINT},
+      </if>
+      <if test="contentId != null">
+        content_id = #{contentId,jdbcType=BIGINT},
+      </if>
+      <if test="floorNum != null">
+        floor_num = #{floorNum,jdbcType=BIGINT},
+      </if>
+      <if test="forbidFlag != null">
+        forbid_flag = #{forbidFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null">
+        modify_by = #{modifyBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.abw.blog.model.AbwComment">
+    update abw_comment
+    set comment_user_id = #{commentUserId,jdbcType=BIGINT},
+      comment_user_name = #{commentUserName,jdbcType=VARCHAR},
+      to_user_id = #{toUserId,jdbcType=BIGINT},
+      to_user_name = #{toUserName,jdbcType=VARCHAR},
+      to_comment_id = #{toCommentId,jdbcType=BIGINT},
+      content_id = #{contentId,jdbcType=BIGINT},
+      floor_num = #{floorNum,jdbcType=BIGINT},
+      forbid_flag = #{forbidFlag,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.abw.blog.model.AbwComment">
+    update abw_comment
+    set comment_user_id = #{commentUserId,jdbcType=BIGINT},
+      comment_user_name = #{commentUserName,jdbcType=VARCHAR},
+      to_user_id = #{toUserId,jdbcType=BIGINT},
+      to_user_name = #{toUserName,jdbcType=VARCHAR},
+      to_comment_id = #{toCommentId,jdbcType=BIGINT},
+      content_id = #{contentId,jdbcType=BIGINT},
+      floor_num = #{floorNum,jdbcType=BIGINT},
+      forbid_flag = #{forbidFlag,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_by = #{modifyBy,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

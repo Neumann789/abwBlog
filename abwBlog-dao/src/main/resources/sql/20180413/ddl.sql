@@ -72,9 +72,12 @@ alter table abw_config add UNIQUE index index_config_type_key (config_type,confi
 create table abw_comment(
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   comment_user_id bigint(20) NOT NULL COMMENT '评论者用户ID',
+  comment_user_name VARCHAR(200) DEFAULT  null COMMENT '评论者用户姓名',
   content TEXT DEFAULT null COMMENT '内容',
   to_user_id bigint(20) NOT NULL COMMENT '被评论的用户ID',
-  to_content_id bigint(20) NOT NULL COMMENT '被评论的内容Id',
+  to_user_name VARCHAR(200) DEFAULT  null COMMENT '用户姓名',
+  to_comment_id bigint(20) NOT NULL COMMENT '被评论的评论Id',
+  content_id bigint(20) NOT NULL COMMENT '被评论的内容Id',
   floor_num bigint(20) NOT NULL COMMENT '楼层数',
   forbid_flag VARCHAR(1) DEFAULT 'N' COMMENT '是否被禁止：Y-禁用，N-可用',
   `create_by` varchar(64) DEFAULT 'sys' COMMENT '创建人',
