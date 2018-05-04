@@ -35,10 +35,6 @@ public class SpringBootStart {
     public static void main(String[] args) throws InterruptedException {
         long start = System.currentTimeMillis();
         ConfigurableApplicationContext acc = new SpringApplicationBuilder().sources(SpringBootStart.class).web(true).bannerMode(Banner.Mode.LOG).run(args);
-        //SpringApplication.run(SpringBootStart.class,args);
-        //AbwUserMapper abwUserMapper = acc.getBean(AbwUserMapper.class);
-       // AbwUser abwUser = abwUserMapper.selectByPrimaryKey(1L);
-        //AbwServiceInterceptor abwServiceInterceptor = acc.getBean(AbwServiceInterceptor.class);
         long end = System.currentTimeMillis();
         logger.info("abwBlog start success ,cost:{} ms", end - start);
         new CountDownLatch(1).await();

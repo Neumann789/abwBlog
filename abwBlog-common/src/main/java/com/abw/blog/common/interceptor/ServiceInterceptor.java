@@ -5,6 +5,7 @@ package com.abw.blog.common.interceptor;
  */
 
 import com.abw.blog.common.BaseRsp;
+import com.abw.blog.common.constants.RspCodeEnum;
 import com.abw.blog.common.exception.AbwException;
 import com.alibaba.fastjson.JSONObject;
 import org.aspectj.lang.JoinPoint;
@@ -54,7 +55,7 @@ public class ServiceInterceptor {
             result = new BaseRsp(e.getCode(), e.getMsg());
         } catch (Exception e) {
             logger.error("系统异常:{}", e);
-            result = BaseRsp.returnSuccss();
+            result = BaseRsp.returnRsp(RspCodeEnum.FAIL.getRspCode(),RspCodeEnum.FAIL.getRspMsg(e.getMessage()));
         }
         long end = System.currentTimeMillis();
         logger.info("方法  {}, 执行结果  {} 耗时:{}ms", getShortMethodName(pjp), JSONObject.toJSONString(result),(end-start));

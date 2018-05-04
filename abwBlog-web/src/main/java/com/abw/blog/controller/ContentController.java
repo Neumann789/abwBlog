@@ -89,6 +89,13 @@ public class ContentController {
         return contentService.searchContentList(contentInfo);
     }
 
+    @RequestMapping(value = "/searchSingleContent",method= RequestMethod.POST)
+    public BaseRsp searchSingleContent(@RequestBody ContentInfo contentInfo) {
+        return contentService.searchSingleContent(contentInfo);
+    }
+
+
+
 
 
 

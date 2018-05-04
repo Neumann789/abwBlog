@@ -69,14 +69,16 @@ CREATE TABLE `abw_config` (
 #abw_config中config_type和config_key添加唯一联合索引
 alter table abw_config add UNIQUE index index_config_type_key (config_type,config_key);
 
+
+#add at 20180503
 create table abw_comment(
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   comment_user_id bigint(20) NOT NULL COMMENT '评论者用户ID',
   comment_user_name VARCHAR(200) DEFAULT  null COMMENT '评论者用户姓名',
-  content TEXT DEFAULT null COMMENT '内容',
+  comment_content TEXT DEFAULT null COMMENT '评论内容',
   to_user_id bigint(20) NOT NULL COMMENT '被评论的用户ID',
   to_user_name VARCHAR(200) DEFAULT  null COMMENT '用户姓名',
-  to_comment_id bigint(20) NOT NULL COMMENT '被评论的评论Id',
+  to_comment_id bigint(20) DEFAULT NULL COMMENT '被评论的评论Id',
   content_id bigint(20) NOT NULL COMMENT '被评论的内容Id',
   floor_num bigint(20) NOT NULL COMMENT '楼层数',
   forbid_flag VARCHAR(1) DEFAULT 'N' COMMENT '是否被禁止：Y-禁用，N-可用',
@@ -86,5 +88,13 @@ create table abw_comment(
   `modify_time` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='评论表';
+
+ALTER TABLE abw_content ADD view_num bigint(20) DEFAULT 0 COMMENT '阅读数';
+ALTER TABLE abw_content ADD comment_num bigint(20) DEFAULT 0 COMMENT '评论数';
+
+#add by fhb at 20180504
+ALTER TABLE abw_content ADD user_name VARCHAR(200) DEFAULT  null COMMENT '用户姓名';
+ALTER TABLE abw_comment ADD comment_class VARCHAR(4) not  null default 'R' COMMENT '评论层次:R-根评论(Root),C-子评论(Child)';
+ALTER TABLE abw_content ADD curr_floor_num bigint(20) NOT NULL DEFAULT 0 COMMENT '当前楼数';
 
 

@@ -1,6 +1,7 @@
 package com.abw.blog.mapper;
 
 
+import com.abw.blog.model.AbwComment;
 import com.abw.blog.model.AbwContent;
 
 import java.util.List;
@@ -21,4 +22,11 @@ public interface AbwContentMapper {
     int updateByPrimaryKey(AbwContent record);
 
     List<AbwContent> searchContentList(AbwContent record);
+
+    int incrCommentNum(Long id);
+
+    int incrViewNum(Long id);
+
+    int incrCurrFloorNum(Long id);
+
 }

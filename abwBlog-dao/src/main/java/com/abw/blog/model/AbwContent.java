@@ -29,6 +29,14 @@ public class AbwContent {
 
     private String content;
 
+    private Long viewNum;
+
+    private Long commentNum;
+
+    private String userName;
+
+    private Long currFloorNum;
+
     public Long getId() {
         return id;
     }
@@ -131,5 +139,37 @@ public class AbwContent {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+
+    public Long getViewNum() {
+        return viewNum;
+    }
+
+    public void setViewNum(Long viewNum) {
+        this.viewNum = viewNum;
+    }
+
+    public Long getCommentNum() {
+        return commentNum;
+    }
+
+    public void setCommentNum(Long commentNum) {
+        this.commentNum = commentNum;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Long getCurrFloorNum() {
+        return currFloorNum;
+    }
+
+    public void setCurrFloorNum(Long currFloorNum) {
+        this.currFloorNum = currFloorNum;
     }
 }

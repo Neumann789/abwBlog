@@ -34,6 +34,15 @@ public class ContentServiceImpl implements ContentService {
         return BaseRsp.returnSuccss(contentList);
     }
 
+    @Override
+    public BaseRsp searchSingleContent(ContentInfo contentInfo) {
+        AbwContent record = new AbwContent();
+        BeanUtils.copyProperties(contentInfo, record);
+        List<AbwContent> contentList = abwContentMapper.searchContentList(record);
+        abwContentMapper.incrViewNum(contentInfo.getId());
+        return BaseRsp.returnSuccss(contentList.get(0));
+    }
+
     private void saveContent(ContentInfo contentInfo){
 
         AbwContent record = new AbwContent();

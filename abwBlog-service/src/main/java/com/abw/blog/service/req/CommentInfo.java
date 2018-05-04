@@ -1,9 +1,11 @@
-package com.abw.blog.model;
+package com.abw.blog.service.req;
 
 import java.util.Date;
-import java.util.List;
 
-public class AbwComment {
+/**
+ * Created by fanghuabao on 2018/5/3 0003.
+ */
+public class CommentInfo {
 
     private Long id;
 
@@ -23,27 +25,9 @@ public class AbwComment {
 
     private String forbidFlag;
 
-    private String createBy;
-
-    private Date createTime;
-
-    private String modifyBy;
-
-    private Date modifyTime;
-
     private String commentContent;
 
     private String commentClass;
-
-    private List<AbwComment> childCommentList;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getCommentUserId() {
         return commentUserId;
@@ -58,7 +42,7 @@ public class AbwComment {
     }
 
     public void setCommentUserName(String commentUserName) {
-        this.commentUserName = commentUserName == null ? null : commentUserName.trim();
+        this.commentUserName = commentUserName;
     }
 
     public Long getToUserId() {
@@ -74,7 +58,7 @@ public class AbwComment {
     }
 
     public void setToUserName(String toUserName) {
-        this.toUserName = toUserName == null ? null : toUserName.trim();
+        this.toUserName = toUserName;
     }
 
     public Long getToCommentId() {
@@ -106,39 +90,7 @@ public class AbwComment {
     }
 
     public void setForbidFlag(String forbidFlag) {
-        this.forbidFlag = forbidFlag == null ? null : forbidFlag.trim();
-    }
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy == null ? null : createBy.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getModifyBy() {
-        return modifyBy;
-    }
-
-    public void setModifyBy(String modifyBy) {
-        this.modifyBy = modifyBy == null ? null : modifyBy.trim();
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
+        this.forbidFlag = forbidFlag;
     }
 
     public String getCommentContent() {
@@ -157,11 +109,11 @@ public class AbwComment {
         this.commentClass = commentClass;
     }
 
-    public List<AbwComment> getChildCommentList() {
-        return childCommentList;
+    public Long getId() {
+        return id;
     }
 
-    public void setChildCommentList(List<AbwComment> childCommentList) {
-        this.childCommentList = childCommentList;
+    public void setId(Long id) {
+        this.id = id;
     }
 }

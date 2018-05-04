@@ -22,4 +22,12 @@ public interface ContentService {
      */
     public BaseRsp searchContentList(ContentInfo contentInfo);
 
+
+    /**
+     * 获取单笔内容
+     * @param contentInfo
+     * @return
+     */
+    public BaseRsp searchSingleContent(ContentInfo contentInfo);
+
 }
