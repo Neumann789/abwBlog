@@ -47,12 +47,12 @@
       title, theme_image, theme_video, 
       tags, user_id, create_by, 
       create_time, modify_by, modify_time, 
-      content,user_name,curr_floor_num)
+      content,user_name)
     values (#{id,jdbcType=BIGINT}, #{source,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
       #{title,jdbcType=VARCHAR}, #{themeImage,jdbcType=VARCHAR}, #{themeVideo,jdbcType=VARCHAR}, 
       #{tags,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, #{createBy,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
-      #{content,jdbcType=LONGVARCHAR},#{userName,jdbcType=VARCHAR},#{currFloorNum,jdbcType=BIGINT})
+      #{content,jdbcType=LONGVARCHAR},#{userName,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.abw.blog.model.AbwContent">
     update abw_content

@@ -95,6 +95,9 @@ ALTER TABLE abw_content ADD comment_num bigint(20) DEFAULT 0 COMMENT '评论数'
 #add by fhb at 20180504
 ALTER TABLE abw_content ADD user_name VARCHAR(200) DEFAULT  null COMMENT '用户姓名';
 ALTER TABLE abw_comment ADD comment_class VARCHAR(4) not  null default 'R' COMMENT '评论层次:R-根评论(Root),C-子评论(Child)';
-ALTER TABLE abw_content ADD curr_floor_num bigint(20) NOT NULL DEFAULT 0 COMMENT '当前楼数';
+ALTER TABLE abw_content ADD curr_floor_num bigint(20)  DEFAULT 0 COMMENT '当前楼数';
+
+ALTER TABLE abw_content MODIFY theme_image VARCHAR(800) DEFAULT NULL  COMMENT '主题图片';
+ALTER TABLE abw_content MODIFY theme_video VARCHAR(800) DEFAULT NULL  COMMENT '主题视频';
 
 
